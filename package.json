@@ -1,0 +1,24 @@
+{
+  "name": "balls",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "eris": "^0.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oyiuu/JS-Discord-Bot.git"
+  },
+  "author": "sushi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oyiuu/JS-Discord-Bot/issues"
+  },
+  "homepage": "https://github.com/oyiuu/JS-Discord-Bot#readme"
+}
