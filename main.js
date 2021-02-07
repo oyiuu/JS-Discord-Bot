@@ -1,33 +1,39 @@
-const Eris = require('eris');
+const Discord = require("discord.js");
 const config = require('./config.json');
+const fs = require('fs');
 
-const bot = new Eris.CommandClient(config.token, {}, {
-    prefix: "?"
+const client = new Discord.Client();
+
+client.on('ready', () => {
+  client.user.setPresence({ activity: { name: 'a competition against Floppa', type: "COMPETING" } ,status: 'idle' })
+  console.log(`ballin'`);
 });
 
-bot.on("ready", () => {
-	console.log("ballin'");
-	bot.editStatus('idle', { name: 'with Floppa', type: 0});
+let prefix = "?"
+
+client.commands = new Discord.Collection();
+
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	client.commands.set(command.name, command);
+}
+
+client.on("message", message => {
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+	const args = message.content.slice(prefix.length).trim().split(/ +/);
+	const command = args.shift().toLowerCase();
+
+	if (command === 'ping') {
+		client.commands.get('ping').execute(message, args);
+	} else if (command === 'avatar') {
+		client.commands.get('avatar').execute(message, args);
+	} else if (command === 'info') {
+		client.commands.get('info').execute(message, args);
+	}
 });
 
-const avatar = bot.registerCommand("avatar", (msg, args) => {
-    if(msg.author.bot) return;
-    const data = {
-        "embed": {
-          "title": "-Avatar URL-",
-          "url": msg.author.staticAvatarURL,
-          "color": 16580705,
-          "image": {
-            "url": msg.author.avatarURL
-          },
-          "author": {
-            "name": msg.author.username + "'s Avatar",
-          }
-        }
-      };
-    
-        bot.createMessage(msg.channel.id, data);
-});
 
-
-bot.connect();
+client.login(config.token);

@@ -5,7 +5,9 @@
   "main": "main.js",
   "dependencies": {
     "discord.js": "^12.5.1",
-    "eris": "^0.14.0"
+    "eris": "^0.14.0",
+    "moment": "^2.29.1",
+    "osuapiv2": "https://github.com/NiceAesth/osuapiv2"
   },
   "devDependencies": {},
   "scripts": {
