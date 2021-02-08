@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 const config = require('./config.json');
+const fetch = require("node-fetch")
 const fs = require('fs');
+const axios = require('axios')
 
 const client = new Discord.Client();
 
@@ -27,11 +29,13 @@ client.on("message", message => {
 	const command = args.shift().toLowerCase();
 
 	if (command === 'ping') {
-		client.commands.get('ping').execute(message, args);
-	} else if (command === 'avatar') {
-		client.commands.get('avatar').execute(message, args);
-	} else if (command === 'info') {
-		client.commands.get('info').execute(message, args);
+		client.commands.get("ping").execute(message, args);
+	} else if (command === "avatar") {
+		client.commands.get("avatar").execute(message, args);
+	} else if (command === "info") {
+		client.commands.get("info").execute(message, args);
+	} else if (command === "weather") {
+		client.commands.get("weather").execute(message, args);
 	}
 });
 
