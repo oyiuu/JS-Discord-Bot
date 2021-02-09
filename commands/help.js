@@ -6,7 +6,7 @@ module.exports = {
 	execute(message, args) {
       const data = new Discord.MessageEmbed()
         .setColor("#D30171")
-        .setAuthor(user.username, user.displayAvatarURL())
+        .setAuthor(message.author.username, message.author.displayAvatarURL())
         .addField("avatar [mention]", "Returns avatar of user")
         .addField("info [mention]", "Returns general information about a user")
         .addField("ping", "Returns response time of the bot")
