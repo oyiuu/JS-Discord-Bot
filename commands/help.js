@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 
+//TO-DO: remove reaction of user instantly
 
 module.exports = {
 	name: "help",
