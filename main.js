@@ -42,7 +42,9 @@ client.on("message", message => {
 		client.commands.get("ban").execute(message, args);
 	} else if (command === "prune") {
 		client.commands.get("prune").execute(message, args);
-	}
+	} else if (command === "cat") {
+		client.commands.get("cat").execute(message, args);
+	} 
 });
 
 
