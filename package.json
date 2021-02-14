@@ -5,13 +5,13 @@
   "main": "main.js",
   "dependencies": {
     "discord.js": "^12.5.1",
-    "eris": "^0.14.0",
     "moment": "^2.29.1",
-    "osuapiv2": "https://github.com/NiceAesth/osuapiv2"
+    "osuapiv2": "https://github.com/NiceAesth/osuapiv2",
+    "snekfetch": "^4.0.4"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node main.js"
   },
   "repository": {
     "type": "git",

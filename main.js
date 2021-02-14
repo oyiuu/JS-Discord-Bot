@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const config = require('./config.json');
+const config = require("./config.json")
 const fs = require('fs');
 
 const client = new Discord.Client();
@@ -25,27 +25,15 @@ client.on("message", message => {
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
+	
+	if (!client.commands.has(command)) return;
 
-	if (command === 'ping') {
-		client.commands.get("ping").execute(message, args);
-	} else if (command === "avatar") {
-		client.commands.get("avatar").execute(message, args);
-	} else if (command === "info") {
-		client.commands.get("info").execute(message, args);
-	} else if (command === "weather") {
-		client.commands.get("weather").execute(message, args);
-	} else if (command === "help") {
-		client.commands.get("help").execute(message, args);
-	} else if (command === "kick") {
-		client.commands.get("kick").execute(message, args);
-	} else if (command === "ban") {
-		client.commands.get("ban").execute(message, args);
-	} else if (command === "prune") {
-		client.commands.get("prune").execute(message, args);
-	} else if (command === "cat") {
-		client.commands.get("cat").execute(message, args);
-	} 
+	try {
+		client.commands.get(command).execute(message, args);
+	} catch (error) {
+		console.error(error);
+		message.reply('there was an error trying to execute that command!');
+	}
 });
-
 
 client.login(config.token);
