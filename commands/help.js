@@ -17,13 +17,15 @@ module.exports = {
 		.addField("avatar [mention]", "Returns avatar of user")
 		.addField("ping", "Returns response time of the bot")
 		.addField("weather (city)", "Returns weather stats of a city")
+		.addField("kick [mention]", "Kicks user from server")
 		.setDescription(pages[page-1])
 	  const embed02 = new Discord.MessageEmbed()
 		.setColor("#D30171")
 		.setFooter(`Page ${page} of ${pages.length}`)
-		.addField("kick [mention]", "Kicks user from server")
 		.addField("ban [mention]", "Bans user from server")
 		.addField("prune [amount]", "Deletes specific amount of messages.")
+		.addField("cat", "returns cute cat picture")
+		.addField("floppa", "Returns a picture of swaggy Floppa")
 		.setDescription(pages[page-1])
 		
       message.channel.send(embed01).then(msg => {
