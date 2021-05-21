@@ -9,7 +9,9 @@
     "osuapiv2": "https://github.com/NiceAesth/osuapiv2",
     "snekfetch": "^4.0.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "dotenv": "^9.0.2"
+  },
   "scripts": {
     "start": "node main.js"
   },

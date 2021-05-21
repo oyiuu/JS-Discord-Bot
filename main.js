@@ -1,6 +1,6 @@
-const Discord = require("discord.js");
-const config = require("./config.json")
-const fs = require('fs');
+import Discord from 'discord.js';
+import {} from "dotenv/config";
+import {fs} from 'fs';
 
 const client = new Discord.Client();
 
@@ -8,8 +8,6 @@ client.on('ready', () => {
   client.user.setPresence({ activity: { name: 'a competition against Floppa', type: "COMPETING" } ,status: 'idle' })
   console.log(`ballin'`);
 });
-
-let prefix = "?"
 
 client.commands = new Discord.Collection();
 
@@ -19,6 +17,8 @@ for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.name, command);
 }
+
+const prefix = process.env.PREFIX;
 
 client.on("message", message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -36,4 +36,4 @@ client.on("message", message => {
 	}
 });
 
-client.login(config.token);
+client.login(process.env.TOKEN);
